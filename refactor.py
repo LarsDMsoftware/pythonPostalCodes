@@ -13,8 +13,7 @@ def readFile():
     return formattedDict
 
 def readInput():
-    validInput = False
-    while not validInput:
+    while True:
         try:
             postCode = input('Give in a valid postcode: ')
             if postCode.isdigit() and len(postCode) == 4:
@@ -24,17 +23,14 @@ def readInput():
         except: 
             print('Error')
         
-
 def compareListAndInput(file, input):
     listOfMatchingPostCodes = []
     allowed_chars =  input 
     validationStrings = file.keys()
-    for s in validationStrings:
-        x = all(ch in allowed_chars for ch in s)
-        if x:
-            listOfMatchingPostCodes.append(formatOutput(s, file[s]))
-        else:
-            continue
+    for strings in validationStrings:
+        validPostCode = all(ch in allowed_chars for ch in strings)
+        if validPostCode:
+            listOfMatchingPostCodes.append(formatOutput(strings, file[strings]))
     return sorted(listOfMatchingPostCodes)
 
 def formatOutput(key, value):
