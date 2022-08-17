@@ -1,15 +1,11 @@
 import re
 
 def readFile():
-    # Using readlines()
     file = open('postalCodes.txt', 'r')
     lines = file.readlines()
-    linesList = []
-    for line in lines:
-        linesList.append(line.strip())
     formattedDict = {}
-    for line in linesList:
-        s = line.split('\t')
+    for line in lines:
+        s = line.strip().split('\t')
         if s[0] in formattedDict.keys():
             formattedDict[s[0]] = formattedDict[s[0]] + " " + s[1]
         else:
@@ -17,15 +13,15 @@ def readFile():
     return formattedDict
 
 def readInput():
-    toContinue = True
+    validInput = False
     postCode = 0
-    while toContinue:
+    while not validInput:
         try:
             postCode = input('Give in a valid postcode: \n')
             if postCode.isdigit() and len(postCode) == 4:
-                toContinue = False
+                validInput = True
             else:
-                toContinue = True
+                validInput = False
                 print('Invalid input, enter a 4 digit Belgian postal code.')
         except: 
             print('Error')
@@ -33,7 +29,7 @@ def readInput():
 
 def compareListAndInput(file, input):
     listOfMatchingPostCodes = []
-    allowed_chars =  input #ListOfNumbers(input)
+    allowed_chars =  input 
     validationStrings = file.keys()
     for s in validationStrings:
         x = all(ch in allowed_chars for ch in s)
