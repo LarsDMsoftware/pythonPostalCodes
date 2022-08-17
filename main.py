@@ -37,19 +37,12 @@ def compareListAndInput(file, input):
             listOfMatchingPostCodes.append(s + ":" + file[s])
         else:
             continue
-    
     return sorted(listOfMatchingPostCodes)
 
 def writeOutput(outputToPrint):
     for strings in outputToPrint:
         x = strings.split(':')
         print(x[0] + " - "+ x[1].replace(' ', ','))
-
-def ListOfNumbers(input):
-    listing = []
-    for i in input:
-        listing.append(i)  
-    return listing
 
 if __name__ == "__main__":
     file = readFile()
