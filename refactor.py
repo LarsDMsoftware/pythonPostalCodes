@@ -14,18 +14,16 @@ def readFile():
 
 def readInput():
     validInput = False
-    postCode = 0
     while not validInput:
         try:
-            postCode = input('Give in a valid postcode: \n')
+            postCode = input('Give in a valid postcode: ')
             if postCode.isdigit() and len(postCode) == 4:
-                validInput = True
+                return postCode
             else:
-                validInput = False
                 print('Invalid input, enter a 4 digit Belgian postal code.')
         except: 
             print('Error')
-    return postCode
+        
 
 def compareListAndInput(file, input):
     listOfMatchingPostCodes = []
