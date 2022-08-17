@@ -1,3 +1,3 @@
 # pythonPostalCodes
 
-Execute command python.py in directory.
+Execute command "python main.py" in directory.
