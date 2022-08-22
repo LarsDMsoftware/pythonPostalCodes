@@ -5,11 +5,11 @@ def readFile():
     lines = file.readlines()
     formattedDict = {}
     for line in lines:
-        s = line.strip().split('\t')
-        if s[0] in formattedDict.keys():
-            formattedDict[s[0]] = formattedDict[s[0]] + " " + s[1]
+        strings = line.strip().split('\t')
+        if strings[0] in formattedDict.keys():
+            formattedDict[strings[0]] = formattedDict[strings[0]] + "," + strings[1]
         else:
-            formattedDict[s[0]] = s[1]
+            formattedDict[strings[0]] = strings[1]
     return formattedDict
 
 def readInput():
@@ -23,18 +23,18 @@ def readInput():
         except: 
             print('Error')
         
-def compareListAndInput(file, input):
+def compareListAndInput(formattedDict, userInput):
     listOfMatchingPostCodes = []
-    allowed_chars =  input 
-    validationStrings = file.keys()
+    allowed_chars =  userInput 
+    validationStrings = formattedDict.keys()
     for strings in validationStrings:
         validPostCode = all(ch in allowed_chars for ch in strings)
         if validPostCode:
-            listOfMatchingPostCodes.append(formatOutput(strings, file[strings]))
+            listOfMatchingPostCodes.append(formatOutput(strings, formattedDict[strings]))
     return sorted(listOfMatchingPostCodes)
 
 def formatOutput(key, value):
-    formattedString = key + " - " + value.replace(' ', ',')
+    formattedString = key + " - " + value
     return formattedString
 
 def writeOutput(outputToPrint):

@@ -7,7 +7,7 @@ def readFile():
     for line in lines:
         s = line.strip().split('\t')
         if s[0] in formattedDict.keys():
-            formattedDict[s[0]] = formattedDict[s[0]] + " " + s[1]
+            formattedDict[s[0]] = formattedDict[s[0]] + "," + s[1]
         else:
             formattedDict[s[0]] = s[1]
     return formattedDict
@@ -40,7 +40,7 @@ def compareListAndInput(file, input):
     return sorted(listOfMatchingPostCodes)
 
 def formatOutput(key, value):
-    formattedString = key + " - " + value.replace(' ', ',')
+    formattedString = key + " - " + value
     return formattedString
 
 def writeOutput(outputToPrint):
