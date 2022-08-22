@@ -1,5 +1,3 @@
-import re
-
 def readFile():
     file = open('postalCodes.txt', 'r')
     lines = file.readlines()
