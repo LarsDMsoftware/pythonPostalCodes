@@ -15,7 +15,7 @@ def readInput():
     postCode = 0
     while not validInput:
         try:
-            postCode = input('Give in a valid postcode: \n')
+            postCode = input('Give in a valid postcode: ')
             if postCode.isdigit() and len(postCode) == 4:
                 validInput = True
             else:
